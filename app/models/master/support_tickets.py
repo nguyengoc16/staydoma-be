@@ -1,7 +1,19 @@
 import uuid
+import enum
 from sqlalchemy import Column, String, Text, Enum, TIMESTAMP, UUID, ForeignKey
 from sqlalchemy.orm import relationship
 from app.core.db import BaseMaster as Base
+
+
+class TicketStatus(enum.Enum):
+    OPEN = "open"
+    IN_PROGRESS = "in_progress"
+    CLOSED = "closed"
+
+class TicketPriority(enum.Enum):
+    LOW = "low"
+    MEDIUM = "medium"
+    HIGH = "high"
 
 class SupportTickets(Base):
     __tablename__ = "support_tickets"
