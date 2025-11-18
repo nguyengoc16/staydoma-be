@@ -17,4 +17,4 @@ class PaymentMethodOut(PaymentMethodBase):
     id: UUID4
 
     class Config:
-        orm_mode = True
+        from_attributes = True

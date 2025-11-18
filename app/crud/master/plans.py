@@ -1,7 +1,7 @@
 # app/crud/master/plans.py
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from app.models.master.plans import Plans
+from app.models.master.billing import Plans
 from app.schemas.master.plans import PlanCreate, PlanUpdate
 from uuid import UUID
 from typing import List, Optional

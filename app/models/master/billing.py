@@ -2,6 +2,8 @@ import uuid
 from sqlalchemy import Column, String, Text, DECIMAL, Boolean, Date, Enum, TIMESTAMP, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from app.core.db import BaseMaster as Base
+from sqlalchemy.orm import relationship
+
 
 class Plans(Base):
     __tablename__ = "plans"
@@ -13,12 +15,16 @@ class Plans(Base):
     active = Column(Boolean, default=True)
     created_at = Column(TIMESTAMP)
 
+    subscriptions = relationship("Subscriptions", back_populates="plan")
 class PaymentMethods(Base):
     __tablename__ = "payment_methods"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    name = Column(String)
+    name = Column(String, nullable=False)
     details_json = Column(Text)
+
+    subscriptions = relationship("Subscriptions", back_populates="payment_method")
+
 
 class Subscriptions(Base):
     __tablename__ = "subscriptions"
@@ -32,3 +38,7 @@ class Subscriptions(Base):
     status = Column(String)
     created_at = Column(TIMESTAMP)
     updated_at = Column(TIMESTAMP)
+
+    tenant = relationship("Tenants", back_populates="subscriptions")
+    plan = relationship("Plans", back_populates="subscriptions")
+    payment_method = relationship("PaymentMethods", back_populates="subscriptions")

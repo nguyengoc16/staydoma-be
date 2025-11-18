@@ -16,4 +16,4 @@ class StaffRoleOut(StaffRoleBase):
     id: UUID4
 
     class Config:
-        orm_mode = True
+        from_attributes = True

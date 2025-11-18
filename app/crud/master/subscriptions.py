@@ -1,7 +1,7 @@
 # app/crud/master/subscriptions.py
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from app.models.master.subscriptions import Subscriptions
+from app.models.master.billing import Subscriptions
 from app.schemas.master.subscriptions import SubscriptionCreate, SubscriptionUpdate
 from typing import List, Optional
 from uuid import UUID

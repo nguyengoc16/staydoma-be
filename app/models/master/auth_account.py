@@ -8,7 +8,7 @@ class AuthAccounts(Base):
     __tablename__ = "auth_accounts"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    ref_id = Column(UUID(as_uuid=True))
+    staff_user_id = Column(UUID(as_uuid=True), ForeignKey("staff_users.id"), nullable=False)
     auth_scope = Column(String)  # e.g., 'staff', 'tenant', etc.
     login_type_id = Column(UUID(as_uuid=True), nullable=True)
     email = Column(String, unique=True)

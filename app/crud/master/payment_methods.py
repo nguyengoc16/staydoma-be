@@ -1,7 +1,7 @@
 # app/crud/master/payment_methods.py
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from app.models.master.payments import PaymentMethods
+from app.models.master.billing import PaymentMethods
 from app.schemas.master.payment_methods import PaymentMethodCreate, PaymentMethodUpdate
 from typing import List, Optional
 from uuid import UUID
